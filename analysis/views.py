@@ -1,4 +1,3 @@
-# analysis/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import time # Используем time.sleep вместо asyncio.sleep
@@ -31,11 +30,11 @@ def perform_analysis_in_background(data: dict):
         "application_id": data.get("application_id"),
         "workshop_id": data.get("workshop_id"),
         "predicted_output": predicted_output,
+        "api_key": api_key,  # Передаем API-ключ
     }
     
     headers = {
         "Content-Type": "application/json",
-        "X-Internal-API-Key": api_key
     }
 
     print(f"Sending result for AppID {payload['application_id']}, WorkshopID {payload['workshop_id']}: {predicted_output}")
